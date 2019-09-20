@@ -13,3 +13,6 @@ been pressed
 photo_interrupt.py: Made a counter of how many times a photo interrupter had
 been interrupted. Made a 4-second timer so that it is constantly looping, but
 only prints the number of interrupts once every 4 seconds.
+
+dist_sensor.py: Hooked an ultrasonic sensor up to my Metro. Made the onboard 
+Metro RGB LED display different colors based on the reading from the sensor.
