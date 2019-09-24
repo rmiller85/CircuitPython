@@ -16,3 +16,7 @@ only prints the number of interrupts once every 4 seconds.
 
 dist_sensor.py: Hooked an ultrasonic sensor up to my Metro. Made the onboard 
 Metro RGB LED display different colors based on the reading from the sensor.
+
+rgb.py: Hoo boy, this was crazy. I made my own module with a class in it, called
+rgb. In the class, creatively named RGB, I made a few functions which set an RGB
+LED to different colors. This was a hard assignment, but pretty fun!
