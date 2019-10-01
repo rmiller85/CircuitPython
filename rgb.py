@@ -4,7 +4,7 @@ import pulseio
 
 class RGB(object):
 
-    full = 65000
+    full = 65535
 
     def __init__(self, R, G, B):
         self.R = pulseio.PWMOut(R, frequency=5000, duty_cycle=0)
