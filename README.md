@@ -1,5 +1,4 @@
-# CircuitPython
-My CircuitPython assignments
+# CircuitPython Assignments
 
 led_fade.py: Made an LED fade using a for loop and duty cycle
 
