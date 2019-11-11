@@ -4,23 +4,27 @@ Below are descriptions of all the CircuitPython assignments I did. I used a Metr
 
 ## LED Fade
 The goal of this assignment was to make an LED fade in and out continuously. I did so using the duty_cycle module and creating a PWM object for the LED. By changing the duty cycle on the LED's power, I was able to get the desired effect of a fading & brightening LED. My code can be found under [led_fade.py](https://github.com/rmiller85/CircuitPython/blob/master/led_fade.py).
-##### Fritzing Model
+#### Fritzing Model
 
 ## CircuitPython Servo
-For this one, I had to make a servo move, controlled by touch-sensitive wires. There were two wires: one for each direction. I used a PWM object again, this one controlling a servo rather than an LED. The code for this one is at [circuitPython_servo.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_servo.py).
+For this one, I had to make a servo move, controlled by touch-sensitive wires. There were two wires: one for each direction. I used a PWM object again, this one controlling a servo rather than an LED. One of the great things about our Metros is that the `touchio` module did basically all the touch stuff for us. We only had to make a touch object and check its value to see if it was being pressed. For example, if I made a touch object called `touchL`, I could check if it was being pressed with `touchL.value`. The code for this one is at [circuitPython_servo.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_servo.py).
+#### Fritzing Model
 
-## circuitPython_lcd.py
-Made an LCD screen display # of times a button had been pressed
+## CircuitPython LCD
+Now I had to wire up an LCD screen and a button. The LCD screen would display how many times the button had been pressed. LCD screens, of course, have an ungodly amount of things you have to wire up, but I was saved by an LCD backpack, which cut the wires down to just four! I had to download a bunch of modules for using LCDs on CircuitPython, but it wasn't too much trouble. I used a simple function that added one to the `presses` variable whenever the button was pressed, then printed that as a `str` to the LCD.
+#### Fritzing Model
 
-## photo_interrupt.py
+## CircuitPython Photointerrupters
 Made a counter of how many times a photo interrupter had been interrupted. Made a 4-second timer so that it is constantly looping, but only prints the number of interrupts once every 4 seconds.
 
-## dist_sensor.py
+## CircuitPython Distance Sensor
 Hooked an ultrasonic sensor up to my Metro. Made the onboard 
 Metro RGB LED display different colors based on the reading from the sensor.
 
-## rgb.py
+## Classes, Objects, and Modules
 Hoo boy, this was crazy. I made my own module with a class in it, called rgb. In the class, creatively named RGB, I made a few functions which set an RGB LED to different colors. This was a hard assignment, but pretty fun!
 
-## hello_vs_code.py
+## Hello VS Code
 This was my first introduction to VS Code. Basic stuff, just printing "Hello there!" every second. I also made it print "General Kenobi! You are a bold one..." in response, because I'm a big heckin nerd.
+
+## FancyLED
