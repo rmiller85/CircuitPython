@@ -15,7 +15,7 @@ Now I had to wire up an LCD screen and a button. The LCD screen would display ho
 #### Fritzing Model
 
 ## CircuitPython Photointerrupters
-For this assignment, I had to wire up a photo interrupter and get it to count how many times it was interrupted in 4 seconds. It would count down from 4 while counting interrupts.
+For this assignment, I had to wire up a photo interrupter and get it to count how many times it was interrupted in 4 seconds. It would count down from 4 while counting interrupts. Here's the trick
 
 ## CircuitPython Distance Sensor
 Hooked an ultrasonic sensor up to my Metro. Made the onboard 
