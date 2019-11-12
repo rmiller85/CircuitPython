@@ -51,7 +51,7 @@ First, I create the variable `interpt_state` and set it to the current value of 
 #### Fritzing Model
 
 ## CircuitPython Distance Sensor
-Hooked an ultrasonic sensor up to my Metro. Made the onboard Metro RGB LED display different colors based on the reading from the sensor.
+insert stuff here
 
 ## Classes, Objects, and Modules
 Hoo boy, this was crazy. I made my own module with a class in it, called rgb. In the class, creatively named RGB, I made a few functions which set an RGB LED to different colors. This was a hard assignment, but pretty fun!
