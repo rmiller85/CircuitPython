@@ -47,11 +47,17 @@ while True:
     last_state = interpt_state
 ```
 
-First, I create the variable `interpt_state` and set it to the current value of the photo interrupter: `True` or `False`. The `if` statement under it basically means, "if it's being interrupted, but wasn't being interrupted the last time I checked." This is so that it doesn't just rocket up if you hold something in it for a while. If that's `True`, it adds one to the interrupt counter, `interrupts`. Finally, I set `last_state` to `interpt_state`. In layman's terms, the next time that it loops, the variable `last_state` will be equal to whatever it is right now. We aren't checking for just whether or not it's *currently* being interrupted, we're checking for whether or not it just got interrupted. Sorry if that didn't make a ton of sense.
+First, I create the variable `interpt_state` and set it to the current value of the photo interrupter: `True` or `False`. The `if` statement under it basically means, "if it's being interrupted, but wasn't being interrupted the last time I checked." This is so that it doesn't just rocket up if you hold something in it for a while. If that's `True`, it adds one to the interrupt counter, `interrupts`. Finally, I set `last_state` to `interpt_state`. In layman's terms, the next time that it loops, the variable `last_state` will be equal to whatever it is right now. We aren't checking for just whether or not it's *currently* being interrupted, we're checking for whether or not it just got interrupted. Sorry if that didn't make a ton of sense. Full code's [here](https://github.com/rmiller85/CircuitPython/blob/master/photo_interrupt.py).
 #### Fritzing Model
 
 ## CircuitPython Distance Sensor
-insert stuff here
+This was pretty fun. I had to make the onboard LED change color based on a reading from an ultrasonic sensor. Unfortunately, most of our ultrasonic sensors are pretty much junk, but hey, you work with what you got. The neopixel module on Adafruit's website wasn't actually terribly helpful, unfortunately. I had to download a new module for the ultrasonic sensor called `adafruit_hcsr04`. It had lots of fun code that looks very scary, like how you create an object for your sensor: `adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)`. *Spooky*. Oh yeah, I also just made two new pins on that line that get used for the sensor. 
+
+At the beginning of my loop, I use the function `distance`, included in that weird `hcrs04 or whatever` module, to get a reading from my sensor. Then, I print the value to the Serial Monitor just so that I can see if it's really messed up, like giving me 872.7 when I'm pointing it at something two inches away (yes, that kind of thing happened quite a bit). This is when I discovered that our sensors are....strange. I was getting some seriously bizarre readings. Turns out, my sensor was (probably) the problem. So of course I did the noble thing and put it back in the bin, because "Someone might want it." I'm sure the next person who used it was delighted. Seriously, I don't know what I was thinking in retrospect. Oh yeah, this happened twice in a row, too, if I remember correctly.
+
+So anyway, after the inevitably f-ed up distance was printed, the code moved on the bulk of the "weird s**t". I used the `map_range` function from the `simpleio` module to get my r, g, & b values to go up or down with the distance. Here's that code.
+
+```
 
 ## Classes, Objects, and Modules
 Hoo boy, this was crazy. I made my own module with a class in it, called rgb. In the class, creatively named RGB, I made a few functions which set an RGB LED to different colors. This was a hard assignment, but pretty fun!
