@@ -6,7 +6,7 @@ Below are descriptions of all the CircuitPython assignments I did. I used a Metr
 
 add more people if you use them
 
-## USE CIRCUITPYTHON ESSENTIALS! IT SAVED MY ASS A HUNDRED TIMES!
+## USE CIRCUITPYTHON ESSENTIALS! IT SAVED MY ~~ASS~~LIFE A HUNDRED TIMES!
 Seriously, bookmark that link **_right now!_** It gives you simple instructions on how tons of stuff works. The farther in to these assignments you get, the less useful this is, but, at least for a long while, it's true to its name: essential.
 
 ## LED Fade
@@ -77,6 +77,7 @@ if sonarValue > 35:
 ```
 
 After it runs all this code, it uses the `fill()` function from the `neopixel` module to set the color. [Here's the full code.](https://github.com/rmiller85/CircuitPython/blob/master/dist_sensor.py)
+#### Fritzing Model
 
 ## Classes, Objects, and Modules
 Hoo boy, this was crazy. I was obviously not new to the prospect of using modules and functions inside them, but now, I had to make my own! Turns out, it's not too terribly complicated. Pretty wack, but not some kind of insurmountable hurdle. Our goal was to make a `class` called `RGB` inside a file, `rgb.py`. This would have a bunch of functions that make the LED turn different colors. I used `PWM`s and `duty_cycle` again. For each function, I would print the color name and then activate the LED. Oh yeah, when you make an `RGB` object, you have to set the pins for `r`, `g`, & `b`. Here's an example: my `blue()` function.
@@ -90,9 +91,38 @@ def blue(self):
 ```
 It takes `self` as an argument, which is just saying that the LED is what it's doing the function to. Then it turns on the `B` part of the LED object that our mysterious user has defined. Now, you might notice one key error in the logic. It turns on everything *except* blue. Well, I'm not quite sure why, but it seems like everything's inversed for whatever reason when it gets spit out as commands for the LED. It just works. <sub>little lies, stunning shows...</sup>
 Full code's [here](https://github.com/rmiller85/CircuitPython/blob/master/rgb.py).
+#### Fritzing Model
 
 ## Hello VS Code
 This was my first introduction to VS Code. Basic stuff, just printing "Hello there!" every second. I also made it print `General Kenobi! You are a bold one...` in response, because I'm a big heckin nerd. Code's at [hello_vs_code.py](https://github.com/rmiller85/CircuitPython/blob/master/hello_vs_code.py).
 
 ## FancyLED
-Back 
+Back to classes again, this time with a metric s$1tload of functions that do cooler things. No RGB LEDs this time, only normal ones, but there's *six* of them. Crazy, right? We needed 4 functions as well: `alternate`, `blink`, `chase`, & `sparkle`. I should probably point out, though, a `FancyLED` object only deals with 3. When the user creates a `FancyLED` object, they have to set the three pins for their three LEDs. For the `alternate` function, I had the LEDs create an alternating pattern (on, off, on) and then switch (off, on, off). For `blink`, I just had them all turn on, then off, then on again. For `chase`, I made it so that they all started off, then one on the side turned on, then the middle one turned on with it, then the third one turned on while the first turns off, then it's just the third, then nothing. That description was terrible, so here's the code. Warning: it's *atrocious*.
+
+```
+def chase(self):
+    self.p1.value = False
+    self.p2.value = False
+    self.p3.value = False
+    sleep(.2)
+    self.p1.value = True
+    self.p2.value = False
+    self.p3.value = False
+    sleep(.2)
+    self.p1.value = True
+    self.p2.value = True
+    self.p3.value = False
+    sleep(.2)
+    self.p1.value = False
+    self.p2.value = True
+    self.p3.value = True
+    sleep(.2)
+    self.p1.value = False
+    self.p2.value = False
+    self.p3.value = True
+    sleep(.2)
+```
+
+See what I mean? I didn't want to be clever and think about what I was doing, so i just brute forced it. Don't be like me. Come up with something better than this, *please*. 
+
+Finally, sparkle.
