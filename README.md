@@ -57,12 +57,42 @@ At the beginning of my loop, I use the function `distance`, included in that wei
 
 So anyway, after the inevitably f-ed up distance was printed, the code moved on the bulk of the "weird s**t". I used the `map_range` function from the `simpleio` module to get my r, g, & b values to go up or down with the distance. Here's that code.
 
+```python
+if sonarValue < 5:
+    r = 255
+    b = 0
+    g = 0
+if sonarValue <= 20 and sonarValue > 0:
+    r = simpleio.map_range(sonarValue, 0, 20, 255, 0)
+    b = simpleio.map_range(sonarValue, 5, 20, 0, 255)
+    g = simpleio.map_range(sonarValue, 20, 35, 0, 255)
+if sonarValue > 20 and sonarValue < 35:
+    r = simpleio.map_range(sonarValue, 0, 20, 255, 0)
+    b = simpleio.map_range(sonarValue, 35, 20, 0, 255)
+    g = simpleio.map_range(sonarValue, 20, 35, 0, 255)
+if sonarValue > 35:
+    r = 0
+    b = 0
+    g = 255
 ```
 
+After it runs all this code, it uses the `fill()` function from the `neopixel` module to set the color. [Here's the full code.](https://github.com/rmiller85/CircuitPython/blob/master/dist_sensor.py)
+
 ## Classes, Objects, and Modules
-Hoo boy, this was crazy. I made my own module with a class in it, called rgb. In the class, creatively named RGB, I made a few functions which set an RGB LED to different colors. This was a hard assignment, but pretty fun!
+Hoo boy, this was crazy. I was obviously not new to the prospect of using modules and functions inside them, but now, I had to make my own! Turns out, it's not too terribly complicated. Pretty wack, but not some kind of insurmountable hurdle. Our goal was to make a `class` called `RGB` inside a file, `rgb.py`. This would have a bunch of functions that make the LED turn different colors. I used `PWM`s and `duty_cycle` again. For each function, I would print the color name and then activate the LED. Oh yeah, when you make an `RGB` object, you have to set the pins for `r`, `g`, & `b`. Here's an example: my `blue()` function.
+
+```
+def blue(self):
+    print("blue")
+    self.R.duty_cycle = self.full
+    self.G.duty_cycle = self.full
+    self.B.duty_cycle = 0
+```
+It takes `self` as an argument, which is just saying that the LED is what it's doing the function to. Then it turns on the `B` part of the LED object that our mysterious user has defined. Now, you might notice one key error in the logic. It turns on everything *except* blue. Well, I'm not quite sure why, but it seems like everything's inversed for whatever reason when it gets spit out as commands for the LED. It just works. <sub>little lies, stunning shows...</sup>
+Full code's [here](https://github.com/rmiller85/CircuitPython/blob/master/rgb.py).
 
 ## Hello VS Code
 This was my first introduction to VS Code. Basic stuff, just printing "Hello there!" every second. I also made it print `General Kenobi! You are a bold one...` in response, because I'm a big heckin nerd. Code's at [hello_vs_code.py](https://github.com/rmiller85/CircuitPython/blob/master/hello_vs_code.py).
 
 ## FancyLED
+Back 
