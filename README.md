@@ -3,8 +3,8 @@
 Below are descriptions of all the CircuitPython assignments I did. I used a Metro M0 Express and the software Mu (except I started using VS Code a little later.). Mu ran my code (until it didn't), written in the CircuitPython language. The [CircuitPython Essentials](https://learn.adafruit.com/circuitpython-essentials) page on Adafruit's website was extremely helpful. I'm using a whole bunch of other people's Fritzing models. Now don't get the wrong idea, I *would* make my own, but I didn't. So here we are. Unfortunately, this means that some pins won't be the same, ~~but if you can't deal with it all I can say is git gud~~ but I trust *YOU* to figure it out! I'm crediting all the Fritzings I steal and providing links to their Githubs. Here's the list right now.
 
 [Dr Shields](https://github.com/DoctorShields)
-
-add more people if you use them
+[Vann](https://github.com/vwellmo57)
+[Graham Lenert](https://github.com/glenert41)
 
 ## USE CIRCUITPYTHON ESSENTIALS! IT SAVED MY ~~ASS~~LIFE A HUNDRED TIMES!
 Seriously, bookmark that link **_right now!_** It gives you simple instructions on how tons of stuff works. The farther in to these assignments you get, the less useful this is, but, at least for a long while, it's true to its name: essential.
@@ -15,11 +15,11 @@ The goal of this assignment was to make an LED fade in and out continuously. I d
 
 ## CircuitPython Servo
 For this one, I had to make a servo move, controlled by touch-sensitive wires. There were two wires: one for each direction. I used a PWM object again, this one controlling a servo rather than an LED. One of the great things about our Metros is that the `touchio` module did basically all the touch stuff for us. We only had to make a touch object and check its value to see if it was being pressed. For example, if I made a touch object called `touchL`, I could check if it was being pressed with `touchL.value`. The code for this one is at [circuitPython_servo.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_servo.py).
-#### Fritzing Model from Dr Shields
+#### Fritzing Model from Vann
 
 ## CircuitPython LCD
 Now I had to wire up an LCD screen and a button. The LCD screen would display how many times the button had been pressed. LCD screens, of course, have an ungodly amount of things you have to wire up, but I was saved by an LCD backpack, which cut the wires down to just four! I had to download a bunch of modules for using LCDs on CircuitPython, but it wasn't too much trouble. I used a simple function that added one to the `presses` variable whenever the button was pressed, then printed that as a `str` to the LCD. The code is under [circuitPython_lcd.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_lcd.py)
-#### Fritzing Model
+#### Fritzing Model from Vann
 
 ## CircuitPython Photointerrupters
 This was a real doozy. I had to wire up a photo interrupter and get it to count how many times it was interrupted in 4 seconds. It would count down from 4 while counting interrupts. Simple, right? Just use `time.sleep()`! Except it has to be counting interrupts while it counts down from 4. To put it simply, I had to make a timer, separate from the loop, that would activate a `print` function every 4 seconds. For this, I used the `monotonic()` function from the `time` module. Here's the snippet of my code that uses this.
@@ -49,6 +49,7 @@ while True:
 
 First, I create the variable `interpt_state` and set it to the current value of the photo interrupter: `True` or `False`. The `if` statement under it basically means, "if it's being interrupted, but wasn't being interrupted the last time I checked." This is so that it doesn't just rocket up if you hold something in it for a while. If that's `True`, it adds one to the interrupt counter, `interrupts`. Finally, I set `last_state` to `interpt_state`. In layman's terms, the next time that it loops, the variable `last_state` will be equal to whatever it is right now. We aren't checking for just whether or not it's *currently* being interrupted, we're checking for whether or not it just got interrupted. Sorry if that didn't make a ton of sense. Full code's [here](https://github.com/rmiller85/CircuitPython/blob/master/photo_interrupt.py).
 #### Fritzing Model
+Literally just plug in the photo interrupter. Don't think a Fritzing model is necessary.
 
 ## CircuitPython Distance Sensor
 This was pretty fun. I had to make the onboard LED change color based on a reading from an ultrasonic sensor. Unfortunately, most of our ultrasonic sensors are pretty much junk, but hey, you work with what you got. The neopixel module on Adafruit's website wasn't actually terribly helpful, unfortunately. I had to download a new module for the ultrasonic sensor called `adafruit_hcsr04`. It had lots of fun code that looks very scary, like how you create an object for your sensor: `adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)`. *Spooky*. Oh yeah, I also just made two new pins on that line that get used for the sensor. 
@@ -77,7 +78,7 @@ if sonarValue > 35:
 ```
 
 After it runs all this code, it uses the `fill()` function from the `neopixel` module to set the color. [Here's the full code.](https://github.com/rmiller85/CircuitPython/blob/master/dist_sensor.py)
-#### Fritzing Model
+#### Fritzing Model from Graham
 
 ## Classes, Objects, and Modules
 Hoo boy, this was crazy. I was obviously not new to the prospect of using modules and functions inside them, but now, I had to make my own! Turns out, it's not too terribly complicated. Pretty wack, but not some kind of insurmountable hurdle. Our goal was to make a `class` called `RGB` inside a file, `rgb.py`. This would have a bunch of functions that make the LED turn different colors. I used `PWM`s and `duty_cycle` again. For each function, I would print the color name and then activate the LED. Oh yeah, when you make an `RGB` object, you have to set the pins for `r`, `g`, & `b`. Here's an example: my `blue()` function.
@@ -91,7 +92,7 @@ def blue(self):
 ```
 It takes `self` as an argument, which is just saying that the LED is what it's doing the function to. Then it turns on the `B` part of the LED object that our mysterious user has defined. Now, you might notice one key error in the logic. It turns on everything *except* blue. Well, I'm not quite sure why, but it seems like everything's inversed for whatever reason when it gets spit out as commands for the LED. It just works. <sub>little lies, stunning shows...</sup>
 Full code's [here](https://github.com/rmiller85/CircuitPython/blob/master/rgb.py).
-#### Fritzing Model
+#### Fritzing Model from Graham
 
 ## Hello VS Code
 This was my first introduction to VS Code. Basic stuff, just printing "Hello there!" every second. I also made it print `General Kenobi! You are a bold one...` in response, because I'm a big heckin nerd. Code's at [hello_vs_code.py](https://github.com/rmiller85/CircuitPython/blob/master/hello_vs_code.py).
@@ -99,7 +100,7 @@ This was my first introduction to VS Code. Basic stuff, just printing "Hello the
 ## FancyLED
 Back to classes again, this time with a metric s$1tload of functions that do cooler things. No RGB LEDs this time, only normal ones, but there's *six* of them. Crazy, right? We needed 4 functions as well: `alternate`, `blink`, `chase`, & `sparkle`. I should probably point out, though, a `FancyLED` object only deals with 3. When the user creates a `FancyLED` object, they have to set the three pins for their three LEDs. For the `alternate` function, I had the LEDs create an alternating pattern (on, off, on) and then switch (off, on, off). For `blink`, I just had them all turn on, then off, then on again. For `chase`, I made it so that they all started off, then one on the side turned on, then the middle one turned on with it, then the third one turned on while the first turns off, then it's just the third, then nothing. That description was terrible, so here's the code. Warning: it's *atrocious*.
 
-```
+```python
 def chase(self):
     self.p1.value = False
     self.p2.value = False
@@ -125,4 +126,28 @@ def chase(self):
 
 See what I mean? I didn't want to be clever and think about what I was doing, so i just brute forced it. Don't be like me. Come up with something better than this, *please*. 
 
-Finally, sparkle.
+Finally, sparkle. For this, I used the `randint()` function from the `random` module. I then made a `for` loop that looped 26 times. In every loop, it set a random number (one or two) to each LED. If an LED was set to one, it would turn on. If not, it turned off. End result: they have the potential to cause an epilectic fit. They sure as hell sparkle though. Here's that bit of code.
+
+```python
+for counter in range(0,25):
+    p1_rand = randint(1,2)
+    p2_rand = randint(1,2)
+    p3_rand = randint(1,2)
+    if p1_rand == 1:
+        self.p1.value = True
+    else:
+        self.p1.value = False
+    if p2_rand == 1:
+        self.p2.value = True
+    else:
+        self.p2.value = False
+    if p3_rand == 1:
+        self.p3.value = True
+    else:
+        self.p3.value = False
+    counter += 1
+    sleep(.05)
+    print(counter)
+```
+The rest of the code's [here](https://github.com/rmiller85/CircuitPython/blob/master/fancyLED.py).
+#### Fritzing Model from Vann
