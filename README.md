@@ -3,7 +3,9 @@
 Below are descriptions of all the CircuitPython assignments I did. I used a Metro M0 Express and the software Mu (except I started using VS Code a little later.). Mu ran my code (until it didn't), written in the CircuitPython language. The [CircuitPython Essentials](https://learn.adafruit.com/circuitpython-essentials) page on Adafruit's website was extremely helpful. I'm using a whole bunch of other people's Fritzing models. Now don't get the wrong idea, I *would* make my own, but I didn't. So here we are. Unfortunately, this means that some pins won't be the same, ~~but if you can't deal with it all I can say is git gud~~ but I trust *YOU* to figure it out! I'm crediting all the Fritzings I steal and providing links to their Githubs. Here's the list right now.
 
 [Dr Shields](https://github.com/DoctorShields)
-[Vann](https://github.com/vwellmo57)
+
+[Vann Wellmon](https://github.com/vwellmo57)
+
 [Graham Lenert](https://github.com/glenert41)
 
 ## USE CIRCUITPYTHON ESSENTIALS! IT SAVED MY ~~ASS~~LIFE A HUNDRED TIMES!
@@ -12,14 +14,17 @@ Seriously, bookmark that link **_right now!_** It gives you simple instructions 
 ## LED Fade
 The goal of this assignment was to make an LED fade in and out continuously. I did so using the duty_cycle module and creating a PWM object for the LED. By changing the duty cycle on the LED's power, I was able to get the desired effect of a fading & brightening LED. My code can be found under [led_fade.py](https://github.com/rmiller85/CircuitPython/blob/master/led_fade.py).
 #### Fritzing Model from Dr Shields
+![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/drshields_led_fade.png "Dr. Shields' Fritzing Model")
 
 ## CircuitPython Servo
 For this one, I had to make a servo move, controlled by touch-sensitive wires. There were two wires: one for each direction. I used a PWM object again, this one controlling a servo rather than an LED. One of the great things about our Metros is that the `touchio` module did basically all the touch stuff for us. We only had to make a touch object and check its value to see if it was being pressed. For example, if I made a touch object called `touchL`, I could check if it was being pressed with `touchL.value`. The code for this one is at [circuitPython_servo.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_servo.py).
 #### Fritzing Model from Vann
+![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/vannservo.png "Vann's Fritzing Model")
 
 ## CircuitPython LCD
 Now I had to wire up an LCD screen and a button. The LCD screen would display how many times the button had been pressed. LCD screens, of course, have an ungodly amount of things you have to wire up, but I was saved by an LCD backpack, which cut the wires down to just four! I had to download a bunch of modules for using LCDs on CircuitPython, but it wasn't too much trouble. I used a simple function that added one to the `presses` variable whenever the button was pressed, then printed that as a `str` to the LCD. The code is under [circuitPython_lcd.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_lcd.py)
 #### Fritzing Model from Vann
+![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/vannLCD.png "Vann's Fritzing Model")
 
 ## CircuitPython Photointerrupters
 This was a real doozy. I had to wire up a photo interrupter and get it to count how many times it was interrupted in 4 seconds. It would count down from 4 while counting interrupts. Simple, right? Just use `time.sleep()`! Except it has to be counting interrupts while it counts down from 4. To put it simply, I had to make a timer, separate from the loop, that would activate a `print` function every 4 seconds. For this, I used the `monotonic()` function from the `time` module. Here's the snippet of my code that uses this.
@@ -79,6 +84,7 @@ if sonarValue > 35:
 
 After it runs all this code, it uses the `fill()` function from the `neopixel` module to set the color. [Here's the full code.](https://github.com/rmiller85/CircuitPython/blob/master/dist_sensor.py)
 #### Fritzing Model from Graham
+![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/graham_Distance_Sensor.png "Graham's Fritzing Model")
 
 ## Classes, Objects, and Modules
 Hoo boy, this was crazy. I was obviously not new to the prospect of using modules and functions inside them, but now, I had to make my own! Turns out, it's not too terribly complicated. Pretty wack, but not some kind of insurmountable hurdle. Our goal was to make a `class` called `RGB` inside a file, `rgb.py`. This would have a bunch of functions that make the LED turn different colors. I used `PWM`s and `duty_cycle` again. For each function, I would print the color name and then activate the LED. Oh yeah, when you make an `RGB` object, you have to set the pins for `r`, `g`, & `b`. Here's an example: my `blue()` function.
@@ -93,6 +99,7 @@ def blue(self):
 It takes `self` as an argument, which is just saying that the LED is what it's doing the function to. Then it turns on the `B` part of the LED object that our mysterious user has defined. Now, you might notice one key error in the logic. It turns on everything *except* blue. Well, I'm not quite sure why, but it seems like everything's inversed for whatever reason when it gets spit out as commands for the LED. It just works. <sub>little lies, stunning shows...</sup>
 Full code's [here](https://github.com/rmiller85/CircuitPython/blob/master/rgb.py).
 #### Fritzing Model from Graham
+![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/graham_rgb.png "Graham's Fritzing Model")
 
 ## Hello VS Code
 This was my first introduction to VS Code. Basic stuff, just printing "Hello there!" every second. I also made it print `General Kenobi! You are a bold one...` in response, because I'm a big heckin nerd. Code's at [hello_vs_code.py](https://github.com/rmiller85/CircuitPython/blob/master/hello_vs_code.py).
@@ -151,3 +158,4 @@ for counter in range(0,25):
 ```
 The rest of the code's [here](https://github.com/rmiller85/CircuitPython/blob/master/fancyLED.py).
 #### Fritzing Model from Vann
+![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/vannFancyLED.png "Vann's Fritzing Model")
