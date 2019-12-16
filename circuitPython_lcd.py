@@ -1,4 +1,8 @@
-  #  lines 3-9 import all the junk we need
+# Rowan V. Miller
+# CircuitPython LCD
+
+
+# lines 3-9 import all the junk we need
 
 from lcd.lcd import LCD
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
