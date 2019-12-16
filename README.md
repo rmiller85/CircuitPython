@@ -8,15 +8,25 @@ Below are descriptions of all the CircuitPython assignments I did. I used a Metr
 
 [Graham Lenert](https://github.com/glenert41)
 
-## USE CIRCUITPYTHON ESSENTIALS! IT SAVED MY ~~ASS~~LIFE A HUNDRED TIMES!
-Seriously, bookmark that link **_right now!_** It gives you simple instructions on how tons of stuff works. The farther in to these assignments you get, the less useful this is, but, at least for a long while, it's true to its name: essential.
+## USE [CIRCUITPYTHON ESSENTIALS](https://learn.adafruit.com/circuitpython-essentials)! IT SAVED MY ~~ASS~~LIFE A HUNDRED TIMES!
+Seriously, bookmark that [link](https://learn.adafruit.com/circuitpython-essentials) **_right now!_** It gives you simple instructions on how tons of stuff works. The farther in to these assignments you get, the less useful this is, but, at least for a long while, it's true to its name: essential.
 
 ## LED Fade
-The goal of this assignment was to make an LED fade in and out continuously. I did so using the duty_cycle module and creating a PWM object for the LED. By changing the duty cycle on the LED's power, I was able to get the desired effect of a fading & brightening LED. My code can be found under [led_fade.py](https://github.com/rmiller85/CircuitPython/blob/master/led_fade.py).
-#### Fritzing Model from Dr Shields
+
+#### Description
+The goal of this assignment was to make an LED fade in and out continuously.
+#### Process
+I did so using the `duty_cycle` module and creating a `PWM` object for the LED. By changing the duty cycle on the LED's power, I was able to get the desired effect of a fading & brightening LED. 
+#### Code 
+My code can be found under [led_fade.py](https://github.com/rmiller85/CircuitPython/blob/master/led_fade.py).
+#### Fritzing Model from [Dr Shields](https://github.com/DoctorShields/CircuitPython/blob/master/media/led_fade_bb.png)
 ![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/drshields_led_fade.png "Dr. Shields' Fritzing Model")
+#### Lessons Learned
+I learned how to use `duty_cycle` and `PWM` thanks to [this](https://learn.adafruit.com/circuitpython-essentials/circuitpython-pwm) article on CircuitPython Essentials.
 
 ## CircuitPython Servo
+
+#### Description
 For this one, I had to make a servo move, controlled by touch-sensitive wires. There were two wires: one for each direction. I used a PWM object again, this one controlling a servo rather than an LED. One of the great things about our Metros is that the `touchio` module did basically all the touch stuff for us. We only had to make a touch object and check its value to see if it was being pressed. For example, if I made a touch object called `touchL`, I could check if it was being pressed with `touchL.value`. The code for this one is at [circuitPython_servo.py](https://github.com/rmiller85/CircuitPython/blob/master/circuitPython_servo.py).
 #### Fritzing Model from Vann
 ![alt text](https://github.com/rmiller85/CircuitPython/blob/master/Fritzing%20Models/vannservo.png "Vann's Fritzing Model")
